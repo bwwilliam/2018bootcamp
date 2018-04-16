@@ -22,7 +22,6 @@ namespace FunctionCosmosDBBinding
                 [DocumentDB("BootcampDB", "ImageData", ConnectionStringSetting = "CosmosDBConnection")]out dynamic outputDocument)
 
         {
-            log.Info("C# HTTP trigger function processed a request.");
             var inputDoc = inputDocuments.FirstOrDefault();
             inputDoc.currentTime = DateTime.Now;
             outputDocument = inputDoc;
@@ -31,8 +30,8 @@ namespace FunctionCosmosDBBinding
             {
                 StatusCode = HttpStatusCode.OK,
                 Content = new StringContent(JsonConvert.SerializeObject(inputDoc), Encoding.UTF8, "application/json")
-
             };
+
             return response;
         }
     }

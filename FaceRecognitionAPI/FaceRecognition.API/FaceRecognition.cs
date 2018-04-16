@@ -22,13 +22,9 @@ namespace FaceRecognition
         public async static Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)]HttpRequestMessage req, 
             TraceWriter log)
         {
-            log.Info("C# HTTP trigger function processed a request.");
             string fileName = await CreateBlob(await req.Content.ReadAsStreamAsync());
-
-
-            //Http 202 Accepted with Location Uri
             return req.CreateResponse(HttpStatusCode.Accepted, new { resultUri = "https://bootcamp-cosmosbindingvs.azurewebsites.net/api/image/" + fileName } );
-            }
+        }
        
         private async static Task<string> CreateBlob(Stream data)
         {
