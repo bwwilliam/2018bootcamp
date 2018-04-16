@@ -1,8 +1,7 @@
 {
   "profiles": {
     "FaceRecognition.API": {
-      "commandName": "Project",
-      "commandLineArgs": "host start --pause-on-error"
+      "commandName": "Project"
     }
   }
 }

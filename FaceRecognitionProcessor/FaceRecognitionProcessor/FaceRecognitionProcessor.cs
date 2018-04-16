@@ -24,7 +24,7 @@ namespace FaceRecognitionProcessor
         {
             log.Info($"C# Blob trigger function Processed blob\n Name:{name} \n Size: {stream.Length} Bytes");
             var results = AnalyzeImage(stream).Result;
-            document = JsonConvert.SerializeObject(new { results = results });
+            document = JsonConvert.SerializeObject(new { results = results, id = Path.GetFileNameWithoutExtension(name) });
         }
 
         private static async Task<JArray> AnalyzeImage(Stream stream)
