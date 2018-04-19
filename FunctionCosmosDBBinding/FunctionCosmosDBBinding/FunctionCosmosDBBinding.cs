@@ -19,7 +19,7 @@ namespace FunctionCosmosDBBinding
         [FunctionName("FunctionCosmosDBBinding")]
         public static HttpResponseMessage Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "image/{id}")]HttpRequestMessage req, string id, TraceWriter log,
               [DocumentDB("BootcampDB", "ImageData", SqlQuery = "select * from c where c.id = {id}", ConnectionStringSetting = "CosmosDBConnection")]IEnumerable<dynamic> inputDocuments,
-                [DocumentDB("BootcampDB", "ImageData", ConnectionStringSetting = "CosmosDBConnection")]out dynamic outputDocument)
+              [DocumentDB("BootcampDB", "ImageData", ConnectionStringSetting = "CosmosDBConnection")]out dynamic outputDocument)
 
         {
             var inputDoc = inputDocuments.FirstOrDefault();
