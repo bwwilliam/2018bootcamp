@@ -22,7 +22,7 @@ Ignore the rest of the sections on this page
 
 ## Integrate CosmosDB with Azure Functions
 * Add Nuget package <code>Microsoft.Azure.WebJobs.Extensions.DocumentDB</code> to Azure Functions App
-* Add <code>DocumentDB</code> binding <code>Run</code> method
+* Add <code>DocumentDB</code> binding to the <code>Run</code> method
 ```csharp
 public static HttpResponseMessage Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "myapi/{id}")]HttpRequestMessage req, string id, TraceWriter log,
               [DocumentDB("CosmosDB", "CosmosDBCollection", SqlQuery = "select * from c where c.id = {id}", ConnectionStringSetting = "CosmosDBConnection")]IEnumerable<dynamic> inputDocuments,
@@ -39,4 +39,4 @@ public static HttpResponseMessage Run([HttpTrigger(AuthorizationLevel.Anonymous,
     return response;
 }
 ```
-
+* Create <code>CosmosDBConnection</code> as an entry under <code>values</code> section in <code>local.settings.json</code>, and copy paste the CosmosDB Key here
